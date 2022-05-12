@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="left-nav">
+            <img style="height: 65px;display:inline-block" src="logo.png">
+            <div style="display: inline-block;">
+                <h1>Employee Directory</h1>
+                <label>The Ultimate People Directory Experience</label>
+            </div>
+        </div>
+        <div class="right-nav">
+            <h1 style="display: inline-block;"> <span style="color: rgb(0, 174, 255);"> Welcome, </span>Andrew Philips
+            </h1>
+            <img src="userlogo.png">
+        </div>
+        <hr style="margin-top: 10px; height: px;">
+    </div>
+
+    <div class="body-container">
+        <div class="left-navbar">
+            <ul style="list-style: none;">
+                <li><b>Departments</b></li>
+                <li id="itl"> <button onclick="filterDep('IT')" style="border: none; " >IT (<p style="display:inline-block" id="it"></p>) </button> </li>
+                <li id="hrl"> <button onclick="filterDep('Human Resources')" style="border: none;">Human Resources (<p style="display:inline-block" id="hr"></p>) </button></li>
+                <li id="mdl"> <button onclick="filterDep('MD')" style="border: none;">MD (<p style="display:inline-block" id="md"></p>)</button> </li>
+                <li id="salesl"> <button onclick="filterDep('Sales')" style="border: none;">Sales (<p style="display:inline-block" id="sales"></p>) </button> </li>
+            </ul>
+            <ul style="list-style: none; padding-top: 30px;">
+                <li><b>Offices</b></li>
+                <li id="sl">Seattle</li>
+                <li id="il">India</li>
+            </ul>
+            <ul style="list-style: none; padding-top: 30px;">
+                <li><b> Job-Titles</b></li>
+                <li id="sphl"> <button onclick="filter('SharePoint practice head')" style="border: none;" > SharePoint Practice Head (<p style="display:inline-block" id="sph"></p>) </button>  </li>
+                <li id="ndll"><button onclick="filter('.Net Devolopment Lead')" style="border: none;" > .Net Devolopment Lead (<p style="display:inline-block" id="ndl"></p>)</button></li>
+                <li id="rel"><button onclick="filter(' Recruiting Expert')" style="border: none;" > Recruiting Expert (<p style="display:inline-block" id="re"></p>)</button></li>
+                <li id="bdl"><button onclick="filter(' BI Developer')" style="border: none;" > BI Developer (<p style="display:inline-block" id="bd"></p>)</button></li>
+                <li id="bal"><button onclick="filter('Business Analyst')" style="border: none;" > Business Analyst (<p style="display:inline-block" id="ba"></p>)</button></li>
+                <li class="list"> <a href="" style="text-decoration: none; color: rgb(0, 204, 255)">view more</a> </li>
+            </ul>
+        </div>
+        <div class="right-container">
+            <div class="top-filter">
+                <button>유</button>
+                <button class="btn" onclick="btnclk('A')">A</button>
+                <button class="btn" onclick="btnclk('B')">B</button>
+                <button class="btn" onclick="btnclk('C')">C</button>
+                <button class="btn" onclick="btnclk('D')">D</button>
+                <button class="btn" onclick="btnclk('E')">E</button>
+                <button class="btn" onclick="btnclk('F')">F</button>
+                <button class="btn" onclick="btnclk('G')">G</button>
+                <button class="btn" onclick="btnclk('H')">H</button>
+                <button class="btn" onclick="btnclk('I')">I</button>
+                <button class="btn" onclick="btnclk('J')">J</button>
+                <button class="btn" onclick="btnclk('K')">K</button>
+                <button class="btn" onclick="btnclk('L')">L</button>
+                <button class="btn" onclick="btnclk('M')">M</button>
+                <button class="btn" onclick="btnclk('N')">N</button>
+                <button class="btn" onclick="btnclk('O')">O</button>
+                <button class="btn" onclick="btnclk('P')">P</button>
+                <button class="btn" onclick="btnclk('Q')">Q</button>
+                <button class="btn" onclick="btnclk('R')">R</button>
+                <button class="btn" onclick="btnclk('S')">S</button>
+                <button class="btn" onclick="btnclk('T')">T</button>
+                <button class="btn" onclick="btnclk('U')">U</button>
+                <button class="btn" onclick="btnclk('V')">V</button>
+                <button class="btn" onclick="btnclk('W')">W</button>
+                <button class="btn" onclick="btnclk('X')">X</button>
+                <button class="btn" onclick="btnclk('Y')">Y</button>
+                <button class="btn" onclick="btnclk('Z')">Z</button>
+            </div>
+            <div class="search">
+                <label for="" style="font-family: Calibri; font-size: 17px;" onkeyup="searchCard()">Search</label>
+                <input type="text" placeholder="🔍 Enter any Keyword" id="search" class="search" onkeyup="searchCard()">
+                <button class="clear" onclick="back()">Clear</button>
+                <label for="">Filter by</label>
+                <select class="filter" name="" id="filter">
+                    <option value="Name">Name</option>
+                    <option value="Office">Office</option>
+                    <option value="JobTitle">JobTitle</option>
+                    <option value="Department">Department</option>
+                </select>
+                <button class="add" onclick="add()"> Add Employee</button>
+            </div>
+            <div class="note">
+                <p> <b>Note:</b> Please use advanced filter options to refine your results</p>
+            </div>
+            <div  style="font-family: system-ui;;" class="employee" id="e-card" >
+                
+
+            </div>
+
+            <div id="simpleModal" class="modal"> 
+                <div class="modal-content">
+                    <span class="closeBtn">&times</span>
+                    <br>
+                    Name:<input type="text" name="" id="e-name">
+                    <br>
+                    Job:<input type="text" name="" id="e-Job">
+                    <br>
+                    Title:<input type="text" name="" id="e-Title">
+                    <br>
+                    <button id="save">SAVE</button>
+                </div>
+            </div>
+
+            <div id="addmodal" class="modal1"> 
+                <div class="content">
+                    <span class="close">&times</span>
+                    <br>
+                    Name:<input type="text" name="" id="add-name">
+                    <br>
+                    Job:<input type="text" name="" id="add-Job">
+                    <br>
+                    Title:<input type="text" name="" id="add-Title">
+                    <br>
+                    <button id="addd">ADD</button>
+                </div>
+            </div>
+
+    </div>
+
+    <script>
+
+
+
+        var employees = [{id:'1',name:'Anthony Morris',job:'SharePoint practice head',field:'IT Department'},{id:'2',name:'Helen', job:'Operations Manager',field:'IT Department'},{id:'3',name:'Jonathan Smith',job:'ProductManager',field:'IT Department'}];
+        let ide=3;
+
+        function filterDep(val){
+            prompt(val);
+        }
+
+        function filter(val){
+            
+            rows=""
+            employees.forEach(employee => {
+                let id=ide+1;
+                        ide=ide+1;
+                if(val==employee.job){
+                     let arr = `<div onClick="edit(${employee.name};)"  id="card" class="styl" style="display: inline-block;">
+                    <div style="display: inline-block;">
+                    <img height="82px" src="userlogo.png"></div>
+
+                    <div style="display: inline-block;">
+                        <label for="" class="name"> <b>${employee.name}</b> </label>
+                        <br>
+                        <label for="" class="job"> ${employee.job}  </label>
+                        <br>
+                        <label for="" class="field"> ${employee.field}</label>
+                        <br>
+                        <img height="20px" src="social.jpg" alt="">
+                    </div>
+                    </div>`;
+                rows = rows + arr;
+                }
+    });
+    document.getElementById('e-card').innerHTML = rows;
+
+        }
+
+        function add(){
+        var added=document.getElementById('addd');
+        var addmodal=document.getElementById('addmodal');
+        var closed=document.getElementsByClassName('close')[0];
+        addmodal.style.display='block';
+        closed.addEventListener('click',close);
+        function close(){
+                addmodal.style.display='none';
+            }
+        let id=ide+1;
+        ide=ide+1;
+        added.addEventListener('click',addval);
+        function addval()
+        { 
+        var add1={};
+        add1.name=document.getElementById('add-name').value;
+        add1.job=document.getElementById('add-Job').value;
+        add1.field=document.getElementById('add-Title').value;
+        add1.id=id;
+        employees.push(add1);
+        addmodal.style.display='none';
+        count();
+        document.getElementById('add-name').value='';
+        document.getElementById('add-Job').value='';
+        document.getElementById('add-Title').value='';
+        add1={};
+        }
+    }
+
+        function edit(id){
+            x=employees.findIndex(_=>_.id==id);
+            var modal=document.getElementById('simpleModal');
+            var closeBtn=document.getElementsByClassName('closeBtn')[0];
+            closeBtn.addEventListener('click',closeModal);
+            modal.style.display='block';
+            function closeModal(){
+                modal.style.display='none';
+            }
+            document.getElementById('e-name').value=employees[x].name;
+            document.getElementById('e-Job').value=employees[x].job;
+            document.getElementById('e-Title').value=employees[x].field;
+            
+            var z=document.getElementById('save');
+            z.addEventListener('click',save);
+            function save(){
+                employees[x].name=document.getElementById('e-name').value;
+                employees[x].job=document.getElementById('e-Job').value;
+                employees[x].field=document.getElementById('e-Title').value;
+                modal.style.display='none';
+                getEmployees()
+            }
+        }
+        
+        function back(){
+            getEmployees();
+            document.getElementById('search').value="";
+        }
+        function btnclk(value){
+            rows=""
+            employees.forEach(employee => {
+                let id=ide+1;
+                        ide=ide+1;
+                if(value==employee.name[0]){
+                     let arr = `<div onClick="edit(${employee.name};)"  id="card" class="styl" style="display: inline-block;">
+                    <div style="display: inline-block;">
+                    <img height="82px" src="userlogo.png"></div>
+
+                    <div style="display: inline-block;">
+                        <label for="" class="name"> <b>${employee.name}</b> </label>
+                        <br>
+                        <label for="" class="job"> ${employee.job}  </label>
+                        <br>
+                        <label for="" class="field"> ${employee.field}</label>
+                        <br>
+                        <img height="20px" src="social.jpg" alt="">
+                    </div>
+                    </div>`;
+                rows = rows + arr;
+                }
+    });
+    document.getElementById('e-card').innerHTML = rows;
+        }
+
+        function getEmployees(){
+        let rows = ''
+        employees.forEach(employee => {
+        let row = `<div onclick="edit(${employee.id})" id="card" class="styl" style="display: inline-block;">
+                    <div style="display: inline-block;">
+                    <img height="82px" src="userlogo.png"></div>
+
+                    <div style="display: inline-block;">
+                        <label for="" class="name"> <b>${employee.name}</b> </label>
+                        <br>
+                        <label style="color: gray;" for="" class="job"> ${employee.job}  </label>
+                        <br>
+                        <label style="color: gray;" for="" class="field"> ${employee.field}</label>
+                        <br>
+                        <img height="20px" src="social.jpg" alt="">
+                    </div>
+                    </div>`;
+        rows = rows + row;
+    });
+    document.getElementById('e-card').innerHTML = rows;
+    }
+
+    function count(){
+        let it=employees.filter(obj=>{
+            if(obj.field=='IT Department'){
+                return true;
+            }
+        }).length;
+        let hr=employees.filter(obj=>{
+            if(obj.field=='Human Resources'){
+                return true;
+            }
+        }).length;
+        let md=employees.filter(obj=>{
+            if(obj.field=='MD'){
+                return true;
+            }
+        }).length;
+        let sales=employees.filter(obj=>{
+            if(obj.field=='Sales'){
+                return true;
+            }
+        }).length;
+        document.getElementById('it').innerHTML=it;
+        document.getElementById('hr').innerHTML=hr;
+        document.getElementById('md').innerHTML=md;
+        document.getElementById('sales').innerHTML=sales;
+
+
+
+
+        x=document.getElementById('itl')
+        a=document.getElementById('hrl')
+        b=document.getElementById('mdl')
+        c=document.getElementById('salesl')
+
+        if(it<1)
+        {
+            x.style.display='none';
+        }
+        else{
+            x.style.display="";
+        }
+        if(hr<1){
+            a.style.display='none';
+        }
+        else{
+            a.style.display="";
+        }
+        if(md<1){
+            b.style.display='none';
+        }
+        else{
+            b.style.display="";
+        }
+        if(sales<1){
+            c.style.display='none';
+        }
+        else{
+            c.style.display="";
+        }
+        getEmployees();
+    }
+    count();
+
+    function jcount(){
+        let sph=employees.filter(obj=>{
+            if(obj.job=='SharePoint practice head'){
+                return true;
+            }
+        }).length;
+        let ndl=employees.filter(obj=>{
+            if(obj.job=='.Net Development Lead'){
+                return true;
+            }
+        }).length;
+        let re=employees.filter(obj=>{
+            if(obj.job=='Recruiting Expert'){
+                return true;
+            }
+        }).length;
+        let bd=employees.filter(obj=>{
+            if(obj.job=='BI Deveoloper'){
+                return true;
+            }
+        }).length;
+        let ba=employees.filter(obj=>{
+            if(obj.job=='Business Analyst'){
+                return true;
+            }
+        }).length;
+
+
+
+        x=document.getElementById('sphl')
+        a=document.getElementById('ndll')
+        b=document.getElementById('rel')
+        c=document.getElementById('bdl')
+        d=document.getElementById('bal')
+
+        if(sph<1)
+        {
+            x.style.display='none';
+        }
+        else{
+            x.style.display="";
+        }
+        if(ndl<1){
+            a.style.display='none';
+        }
+        else{
+            a.style.display="";
+        }
+        if(re<1){
+            b.style.display='none';
+        }
+        else{
+            b.style.display="";
+        }
+        if(bd<1){
+            c.style.display='none';
+        }
+        else{
+            c.style.display="";
+        }
+        if(ba<1){
+            d.style.display='none';
+        }
+        else{
+            d.style.display="";
+        }
+
+        document.getElementById('sph').innerHTML=sph;
+        document.getElementById('ndl').innerHTML=ndl;
+        document.getElementById('bd').innerHTML=bd;
+        document.getElementById('ba').innerHTML=ba;
+
+        getEmployees();
+    }
+    jcount();
+
+    function searchCard(){
+        const input=document.getElementById('search').value.toUpperCase();
+        filterval=document.getElementById('filter').value;
+        rows="";
+        employees.forEach(employee => { 
+                if(input==employee.name[0] && filterval=='Name'){
+                     let arr = `<div onclick="edit()" id="card" class="styl" style="display: inline-block;">
+                    <div style="display: inline-block;">
+                    <img height="82px" src="userlogo.png"></div>
+
+                    <div style="display: inline-block;">
+                        <label for="" class="name"> <b>${employee.name}</b> </label>
+                        <br>
+                        <label style="color: gray;" for="" class="job"> ${employee.job}  </label>
+                        <br>
+                        <label style="color: gray;" for="" class="field"> ${employee.field}</label>
+                        <br>
+                        <img height="20px" src="social.jpg" alt="">
+                    </div>
+                    </div>`;
+                rows = rows + arr;
+                }
+                count();
+    });
+    employees.forEach(employee => {
+                if(input==employee.job[0] && filterval=='JobTitle'){
+                     let arr = `<div onclick="edit()" id="card" class="styl" style="display: inline-block;">
+                    <div style="display: inline-block;">
+                    <img height="82px" src="userlogo.png"></div>
+
+                    <div style="display: inline-block;">
+                        <label for="" class="name"> <b>${employee.name}</b> </label>
+                        <br>
+                        <label style="color: gray;" for="" class="job"> ${employee.job}  </label>
+                        <br>
+                        <label style="color: gray;" for="" class="field"> ${employee.field}</label>
+                        <br>
+                        <img height="20px" src="social.jpg" alt="">
+                    </div>
+                    </div>`;
+                rows = rows + arr;
+                }
+    });
+    employees.forEach(employee => {
+                if(input==employee.field[0] && filterval=='Department'){
+                     let arr = `<div onclick="edit()" id="card" class="styl" style="display: inline-block;">
+                    <div style="display: inline-block;">
+                    <img height="82px" src="userlogo.png"></div>
+
+                    <div style="display: inline-block;">
+                        <label for="" class="name"> <b>${employee.name}</b> </label>
+                        <br>
+                        <label style="color: gray;" for="" class="job"> ${employee.job}  </label>
+                        <br>
+                        <label style="color: gray;" for="" class="field"> ${employee.field}</label>
+                        <br>
+                        <img height="20px" src="social.jpg" alt="">
+                    </div>
+                    </div>`;
+                rows = rows + arr;
+                }
+    });
+    document.getElementById('e-card').innerHTML = rows;
+    }
+
+
+    getEmployees();
+
+    </script>
+</body>
+
+</html>
